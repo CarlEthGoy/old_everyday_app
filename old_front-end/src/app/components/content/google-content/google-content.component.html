@@ -1,0 +1,23 @@
+<div class="full-height content">
+<ng-container *ngIf="!content.isExecutable">
+  <iframe [src]="url" [width]="pageWidth" [height]="pageHeight" style="margin-top: 25px; position:absolute; border: none;"> </iframe>
+</ng-container>
+  <div class="row">
+    <div [style.width.px]="pageWidth - 180">
+        <input class="input-text" id="url" type="text" (change)="onChange()" [(ngModel)]="content.content"/>
+    </div>
+    <div class="col s6 checkbox-button">
+      <ly-checkbox id="isLocal" [checked]="content.isExecutable" (change)="content.isExecutable = !content.isExecutable">is local</ly-checkbox>
+    </div>
+    <div class="col s6 open-button" (click)="openFile()">
+        <i class="material-icons">
+            open_in_browser
+        </i>
+    </div>
+    <div class="col s6 dialog-button" (click)="showDialog()">
+        <i class="material-icons">
+            add_to_queue
+        </i>
+    </div>
+  </div>
+</div>

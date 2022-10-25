@@ -1,0 +1,40 @@
+<div [class.active]="currentFile == file" class="subFile">
+  <div class="item" draggable="true" (click)="changeFileAndContent();" (dragstart)="dragStart($event)"
+    (dragover)="dragOver($event)" (drop)="dragDrop($event)">
+    <i class="material-icons" [ngStyle]="{'color' : file.iconColor}">insert_drive_file</i><ng-container *ngIf="file?.hasChanged || file?.content?.hasChanged"><span style="font-size: 8px">*</span></ng-container>
+    <input [contextMenu]="folderMenu" [contextMenuSubject]="file" (dblclick)="activateRenaming($event.target)"
+      (blur)="deactivateRenaming($event.target)" class="input-text" [ngModel]="file.title" readonly>
+  </div>
+</div>
+<context-menu>
+  <ng-template contextMenuItem (execute)="addFolder($event.item);">
+    <div>
+      <i class="material-icons">create_new_folder</i>
+      Add Folder
+    </div>
+  </ng-template>
+  <ng-template contextMenuItem (execute)="addFile($event.item);">
+    <div>
+      <i class="material-icons">insert_drive_file</i>
+      Add File
+    </div>
+  </ng-template>
+  <ng-template contextMenuItem (execute)="addExternalFile($event.item);">
+      <div>
+        <i class="material-icons">attachment</i>
+        Add Shortcut
+      </div>
+    </ng-template>
+  <ng-template contextMenuItem (execute)="delete($event.item);">
+    <div>
+      <i class="material-icons">delete</i>
+      Delete
+    </div>
+  </ng-template>
+  <ng-template contextMenuItem (execute)="copyMessage($event.item);">
+    <div>
+      <i class="material-icons">file_copy</i>
+      Copy content
+    </div>
+  </ng-template>
+</context-menu>

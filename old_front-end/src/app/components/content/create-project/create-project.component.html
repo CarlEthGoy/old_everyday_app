@@ -1,0 +1,47 @@
+<div class="create-project">
+  <h1>Create a new project</h1>
+
+  <form [formGroup]="profileForm"
+  (ngSubmit)="onSubmit()"
+  [className]="classes.container"
+>
+  <ly-field appearance="filled" fullWidth>
+    <input lyNativeControl
+      type="text"
+      placeholder="Name"
+      formControlName="projectname"
+    >
+    <ly-hint>Hint</ly-hint>
+    <ly-error *ngIf="formProjectName.hasError('minlength')">Min 5 characters</ly-error>
+    <ly-error *ngIf="formProjectName.hasError('maxlength')">Max 16 characters</ly-error>
+    <ly-error *ngIf="formProjectName.hasError('required')">Required</ly-error>
+    <ly-hint [align]="'after'">{{ formProjectName.value?.length || 0 }}/32</ly-hint>
+  </ly-field>
+  <ly-field appearance="filled" fullWidth>
+    <input lyNativeControl
+      type="text"
+      placeholder="Image base64"
+      formControlName="imageBase64"
+    >
+  </ly-field>
+  <a ly-button outlined (click)="openBase64ImageLink()"  target="_blank">Image converter</a>
+  <br>
+  <br>
+  <button ly-button
+    bg="primary"
+    (click)="sb.open()"
+  >Submit</button>
+  </form>
+</div>
+
+<div class="create-project">
+  <ng-template id="snackbar" class="snackbar" ly-snack-bar
+  #sb="lySnackBar"
+  duration="Infinity"
+>
+<span>Project {{ isCreated ? '' : 'not' }} created</span>
+  <button ly-button color="accent" (click)="sb.dismiss()">
+    Dismiss
+  </button>
+</ng-template>
+</div>

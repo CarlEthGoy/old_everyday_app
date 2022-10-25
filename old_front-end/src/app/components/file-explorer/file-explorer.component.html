@@ -1,0 +1,13 @@
+<div>
+  <input class="input-text-search" [(ngModel)]="searchText" (ngModelChange)="filterFiles()" placeholder="search" type="text"/>
+</div>
+<div *ngIf="files && files.length > 0" class="file-explorer disable-select" [style.height.px]="pageHeight">
+  <div *ngFor="let file of files">
+    <ng-container *ngIf="file?.type === 'file' && file?.parent?.isOpen">
+      <app-file [file]="file"></app-file>
+    </ng-container>
+    <ng-container *ngIf="file?.type === 'folder' || file?.type === 'root'">
+      <app-folder [file]="file" [files]="file.childs"></app-folder>
+    </ng-container>
+  </div>
+</div>

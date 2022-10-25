@@ -1,0 +1,17 @@
+<div class="full-height content">
+  <div id="form-wrapper">
+      <form (ngSubmit)="tryLogin()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input [(ngModel)]="login" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-text curved-borders" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" type="password" class="form-control input-text curved-borders" />
+        </div>
+        <div class="form-group">
+            <button type="submit" ly-button style="width: 100%; margin-top: 10px;" bg="primary">Login</button>
+        </div>
+    </form>
+  </div>
+</div>

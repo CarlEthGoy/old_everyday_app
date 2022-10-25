@@ -1,0 +1,31 @@
+@import 'src/style/variables.scss';
+
+.subFile {
+  padding-left: 15px;
+}
+
+.subFile:hover{
+  background-color: lighten($background-color, 15%);
+  cursor:default;
+}
+
+.subFile.active{
+  background-color: lighten($background-color, 25%);
+}
+
+.input-text {
+  padding-left: 5px;
+  border: none;
+  width: auto;
+  background-color: rgba(0,0,0,0);
+  color: $primary-text-color;
+  outline: none;
+  cursor:default;
+}
+
+.item {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+}
+

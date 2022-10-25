@@ -1,0 +1,46 @@
+@import 'src/style/variables.scss';
+
+
+div.app{
+  min-width: 1000px;
+}
+
+.row{
+  margin-bottom: 0px;
+}
+
+// Main components
+.content{
+  background-color: lighten($background-color, 8%);
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.files{
+  background-color: lighten($background-color, 5%);
+  min-width: 236px;
+  max-width: 236px;
+  width: 236px;
+  float: left;
+  overflow-y: auto;
+  height: 100%;
+  overflow: hidden;
+}
+
+.icons{
+  background-color: $background-color;
+  min-width: 68px;
+  max-width: 68px;
+  width: 68;
+  float: left;
+  display: flex;
+  overflow-y: auto;
+  height: 100%;
+  overflow: hidden;
+}
+@media only screen and (max-width: 1026px) {
+  .icons {
+      display: none;
+  }
+}

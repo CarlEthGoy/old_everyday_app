@@ -1,0 +1,10 @@
+<div class="full-height icons project-explorer">
+  <div (click)="setFileExplorer(project)" class="icon-item" *ngFor="let project of projects">
+      <img [src]="project.icon" [alt]="project.title" ondragstart="return false;" [class]="project.active ? 'active' : ''"> 
+  </div> 
+</div>
+
+<div (click)="onAddProjectClick()" class="bottom">
+    <i class="medium material-icons">add</i>
+</div>
+        

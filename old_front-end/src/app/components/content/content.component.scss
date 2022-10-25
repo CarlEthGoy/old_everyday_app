@@ -1,0 +1,5 @@
+@import '../../../style/variables.scss';
+
+:host ::ng-deep .ck-editor__editable_inline {
+  height: calc(100vh - 41px);
+}

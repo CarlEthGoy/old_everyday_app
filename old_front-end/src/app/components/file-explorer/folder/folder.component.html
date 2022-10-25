@@ -1,0 +1,50 @@
+<div class="subFolder">
+  <div class="folder" (click)="changeFile();" [draggable]="!isRoot" (dragstart)="dragStart($event)"
+    (dragover)="dragOver($event)" (drop)="dragDrop($event)">
+    <ng-container *ngIf="file.isOpen || file.type === 'root'">
+      <i [ngStyle]="{'color' : file.iconColor}" class="material-icons" (click)="openFolder();">folder_open</i>
+      <input [contextMenu]="folderMenu" [contextMenuSubject]="file" (dblclick)="activateRenaming($event.target)"
+        (blur)="deactivateRenaming($event.target)" class="input-text" [ngModel]="file.title" readonly>
+    </ng-container>
+    <ng-container *ngIf="!file.isOpen && file.type !== 'root'">
+      <i [ngStyle]="{'color' : file.iconColor}" class="material-icons" (click)="openFolder();">folder</i>
+      <input [contextMenu]="folderMenu" [contextMenuSubject]="file" (dblclick)="activateRenaming($event.target)"
+        (blur)="deactivateRenaming($event.target)" class="input-text" [ngModel]="file.title" readonly>
+    </ng-container>
+  </div>
+  <div *ngFor="let file of files">
+    <ng-container *ngIf="file.type === 'file' && file.parent.isOpen">
+      <app-file [file]="file"></app-file>
+    </ng-container>
+    <ng-container *ngIf="file.type === 'folder' && file.parent.isOpen">
+      <app-folder [file]="file" [files]="file.childs"></app-folder>
+    </ng-container>
+  </div>
+</div>
+
+<context-menu>
+  <ng-template contextMenuItem (execute)="addChildFolder($event.item);">
+    <div>
+      <i class="material-icons">create_new_folder</i>
+      Add Folder
+    </div>
+  </ng-template>
+  <ng-template contextMenuItem (execute)="addChildFile($event.item);">
+    <div>
+      <i class="material-icons">insert_drive_file</i>
+      Add File
+    </div>
+  </ng-template>
+  <ng-template contextMenuItem (execute)="addExternalFile($event.item);">
+      <div>
+        <i class="material-icons">attachment</i>
+        Add Shortcut
+      </div>
+    </ng-template>
+  <ng-template contextMenuItem (execute)="delete($event.item);">
+    <div>
+      <i class="material-icons">delete</i>
+      Delete
+    </div>
+  </ng-template>
+</context-menu>

@@ -1,0 +1,44 @@
+@import 'src/style/variables.scss';
+
+.open-button{
+  text-align: center;
+  position: absolute; 
+  margin-right: 8px;
+  padding-top: 2px;
+  width: 30px;
+  max-width: 30px;
+  top: 0; 
+  right: 0;
+  color: darken($secondary-color, 20%);
+  cursor: pointer;
+}
+
+.dialog-button{
+  text-align: center;
+  position: absolute; 
+  margin-right: 38px;
+  padding-top: 2px;
+  width: 30px;
+  max-width: 30px;
+  top: 0; 
+  right: 0;
+  color: darken($secondary-color, 20%);
+  cursor: pointer;
+}
+
+.checkbox-button{
+  position: absolute; 
+  margin-right: 68px;
+  margin-top: -10px;
+  width: 100px;
+  max-width: 100px;
+  top: 0; 
+  right: 0;
+  color: darken($secondary-color, 20%);
+  cursor: pointer;
+}
+
+.open-button:hover, .dialog-button:hover{
+  color: white;
+  text-align: center;
+}

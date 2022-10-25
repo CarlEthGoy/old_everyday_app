@@ -1,0 +1,24 @@
+@import 'src/style/variables.scss';
+
+// Main components
+.content{
+  background-color: lighten($background-color, 8%);
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+
+
+body {
+  position: relative;
+}
+
+#form-wrapper {     
+  width: 300px;           /* Set this to your convenience */
+  height: 200px;          /* Set this to your convenience */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;     /* Half of height */
+  margin-left: -150px;     /* Half of width */
+}
